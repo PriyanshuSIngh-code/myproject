@@ -1,0 +1,1040 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AarogyaSetu</title>
+
+    <!-- Your CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ======================================
+         NAVBAR
+    ======================================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🩺 AarogyaSetu
+        </div>
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#hospitals">
+                Hospitals
+            </a>
+
+            <a href="#featured-hospitals">
+                Healthcare Centres
+            </a>
+
+            <a href="#chat">
+                Health Assistant
+            </a>
+
+            <a href="#schemes">
+                Schemes
+            </a>
+
+            <a href="#first-aid">
+                First Aid
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- ======================================
+             HERO
+        ======================================= -->
+
+        <section
+            id="home"
+            class="hero"
+        >
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <span class="badge">
+                    🩺 YOUR HEALTHCARE NAVIGATOR
+                </span>
+
+                <h1>
+                    Live
+                    <br>
+                    <span>Better with us.</span>
+                </h1>
+
+                <p>
+                    Find nearby hospitals, explore healthcare
+                    facilities, and get healthcare-navigation
+                    assistance using your location.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button
+                        class="primary-btn"
+                        onclick="findHospitals()"
+                    >
+                        📍 Find Hospitals Near Me
+                    </button>
+
+                    <button
+                        class="secondary-btn"
+                        onclick="scrollToChat()"
+                    >
+                        🤖 Ask Health Assistant
+                    </button>
+
+                </div>
+
+                <p
+                    id="locationStatus"
+                    class="status"
+                ></p>
+
+            </div>
+
+
+            <!-- Floating cards -->
+
+            <div class="hero-decoration">
+
+                <div class="floating-card card-one">
+                    🏥 Hospitals
+                </div>
+
+                <div class="floating-card card-two">
+                    📍 Nearby Care
+                </div>
+
+                <div class="floating-card card-three">
+                    🩺 Health Support
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             FEATURES
+        ======================================= -->
+
+        <section class="features">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Nearby Hospitals
+                </h3>
+
+                <p>
+                    Find healthcare facilities around
+                    your current location.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Health Assistant
+                </h3>
+
+                <p>
+                    Ask general healthcare-navigation
+                    questions.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🏛️
+                </div>
+
+                <h3>
+                    Health Schemes
+                </h3>
+
+                <p>
+                    Learn where to find official
+                    information about government
+                    healthcare schemes.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             HOSPITAL SEARCH
+        ======================================= -->
+
+        <section
+            id="hospitals"
+            class="section hospital-section"
+        >
+
+            <div class="section-heading">
+
+                <span class="small-title">
+                    LOCATION SERVICES
+                </span>
+
+                <h2>
+                    Hospitals near you
+                </h2>
+
+                <p>
+                    Allow location access to search
+                    for nearby hospitals and
+                    healthcare facilities.
+                </p>
+
+            </div>
+
+
+            <div class="map-wrapper">
+
+                <div id="map"></div>
+
+            </div>
+
+
+            <div
+                id="hospitalList"
+                class="hospital-list"
+            >
+
+                <div class="empty-state">
+
+                    <div class="big-icon">
+                        📍
+                    </div>
+
+                    <h3>
+                        No hospitals loaded
+                    </h3>
+
+                    <p>
+                        Click "Find Hospitals Near Me"
+                        to search.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             FEATURED HEALTHCARE CENTRES
+        ======================================= -->
+
+        <section
+            id="featured-hospitals"
+            class="section featured-hospitals"
+        >
+
+            <div class="section-heading">
+
+                <span class="small-title">
+                    FEATURED HEALTHCARE CENTRES
+                </span>
+
+                <h2>
+                    Explore healthcare centres
+                </h2>
+
+                <p>
+                    Learn about major healthcare
+                    institutions and healthcare
+                    services.
+                </p>
+
+            </div>
+
+
+            <div class="featured-hospital-grid">
+
+
+                <!-- AIIMS -->
+
+                <article class="featured-hospital-card">
+
+                    <div class="hospital-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=900&q=80"
+                            alt="Hospital building"
+                        >
+
+                        <span class="image-label">
+                            NEW DELHI
+                        </span>
+
+                    </div>
+
+
+                    <div class="featured-hospital-content">
+
+                        <span class="hospital-tag">
+                            NATIONAL INSTITUTION
+                        </span>
+
+                        <h3>
+                            AIIMS New Delhi
+                        </h3>
+
+                        <p>
+                            All India Institute of Medical
+                            Sciences provides medical education,
+                            research and patient-care services.
+                        </p>
+
+
+                        <div class="hospital-services">
+
+                            <span>
+                                🏥 Patient Care
+                            </span>
+
+                            <span>
+                                🔬 Research
+                            </span>
+
+                            <span>
+                                🎓 Medical Education
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="https://www.aiims.edu/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Official Website →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Apollo -->
+
+                <article class="featured-hospital-card">
+
+                    <div class="hospital-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80"
+                            alt="Modern hospital"
+                        >
+
+                        <span class="image-label">
+                            INDIA
+                        </span>
+
+                    </div>
+
+
+                    <div class="featured-hospital-content">
+
+                        <span class="hospital-tag">
+                            HEALTHCARE NETWORK
+                        </span>
+
+                        <h3>
+                            Apollo Hospitals
+                        </h3>
+
+                        <p>
+                            Apollo Hospitals operates a
+                            healthcare network offering
+                            multispecialty and super-specialty
+                            healthcare services.
+                        </p>
+
+
+                        <div class="hospital-services">
+
+                            <span>
+                                ❤️ Cardiology
+                            </span>
+
+                            <span>
+                                🧠 Neurosciences
+                            </span>
+
+                            <span>
+                                🚑 Emergency Care
+                            </span>
+
+                        </div>
+
+
+                        <a
+                            href="https://www.apollohospitals.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Official Website →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Local Hospitals -->
+
+                <article class="featured-hospital-card">
+
+                    <div class="hospital-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=900&q=80"
+                            alt="Healthcare facility"
+                        >
+
+                        <span class="image-label">
+                            NEAR YOU
+                        </span>
+
+                    </div>
+
+
+                    <div class="featured-hospital-content">
+
+                        <span class="hospital-tag">
+                            LOCATION SEARCH
+                        </span>
+
+                        <h3>
+                            Find Local Hospitals
+                        </h3>
+
+                        <p>
+                            Use your location to discover
+                            hospitals and healthcare
+                            facilities around you.
+                        </p>
+
+
+                        <div class="hospital-services">
+
+                            <span>
+                                📍 Nearby
+                            </span>
+
+                            <span>
+                                🗺️ Map
+                            </span>
+
+                            <span>
+                                🏥 Healthcare
+                            </span>
+
+                        </div>
+
+
+                        <a href="#hospitals">
+                            Find Hospitals →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             HEALTH ASSISTANT
+        ======================================= -->
+
+        <section
+            id="chat"
+            class="chat-section"
+        >
+
+            <div class="chat-container">
+
+
+                <div class="chat-info">
+
+                    <span class="small-title">
+                        HEALTH NAVIGATOR
+                    </span>
+
+                    <h2>
+                        Need help?
+                    </h2>
+
+                    <p>
+                        Ask our health-navigation assistant
+                        about finding healthcare facilities
+                        or where to seek help.
+                    </p>
+
+
+                    <div class="warning">
+
+                        ⚠️
+
+                        <strong>
+                            Important:
+                        </strong>
+
+                        This assistant provides general
+                        information and does not diagnose
+                        medical conditions.
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-box">
+
+
+                    <div class="chat-header">
+
+                        <span>
+                            🤖 Health Assistant
+                        </span>
+
+                        <span class="online">
+                            ● Online
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="chatMessages"
+                        class="chat-messages"
+                    >
+
+                        <div class="message bot">
+
+                            Hello! 👋
+
+                            <br><br>
+
+                            I can help you navigate
+                            healthcare services.
+
+                            <br><br>
+
+                            You can ask me about finding
+                            hospitals or healthcare
+                            navigation.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chat-input">
+
+                        <input
+                            type="text"
+                            id="chatInput"
+                            placeholder="Type your question..."
+                            onkeydown="handleEnter(event)"
+                        >
+
+                        <button
+                            onclick="sendMessage()"
+                            aria-label="Send message"
+                        >
+                            ➤
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             FIRST AID
+        ======================================= -->
+
+        <section
+            id="first-aid"
+            class="section first-aid"
+        >
+
+            <div class="section-heading">
+
+                <span class="small-title">
+                    HEALTH GUIDANCE
+                </span>
+
+                <h2>
+                    First Aid & Health Guidance
+                </h2>
+
+                <p>
+                    Enter basic information and select
+                    your symptoms to receive general
+                    health guidance.
+                </p>
+
+            </div>
+
+
+            <div class="first-aid-container">
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label for="age">
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            min="1"
+                            max="120"
+                            placeholder="Enter your age"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="gender">
+                            Gender
+                        </label>
+
+                        <select id="gender">
+
+                            <option value="">
+                                Select gender
+                            </option>
+
+                            <option>
+                                Male
+                            </option>
+
+                            <option>
+                                Female
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                            <option>
+                                Prefer not to say
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="issue">
+                        What is your main issue?
+                    </label>
+
+                    <input
+                        type="text"
+                        id="issue"
+                        placeholder="Example: I have been feeling sick since yesterday"
+                    >
+
+                </div>
+
+
+                <div class="symptoms-title">
+                    Select your symptoms
+                </div>
+
+
+                <div class="symptoms">
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="cough"
+                        >
+
+                        Cough
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="fever"
+                        >
+
+                        Fever
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="cold"
+                        >
+
+                        Cold
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="headache"
+                        >
+
+                        Headache
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="stomach"
+                        >
+
+                        Stomach problem
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="vomiting"
+                        >
+
+                        Vomiting
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="throat"
+                        >
+
+                        Sore throat
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="diarrhea"
+                        >
+
+                        Diarrhea
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="bodypain"
+                        >
+
+                        Body pain
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="dizziness"
+                        >
+
+                        Dizziness
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="breathing"
+                        >
+
+                        Breathing difficulty
+
+                    </label>
+
+
+                    <label class="symptom">
+
+                        <input
+                            type="checkbox"
+                            value="rash"
+                        >
+
+                        Skin rash
+
+                    </label>
+
+
+                </div>
+
+
+                <button
+                    class="analyze-btn"
+                    onclick="analyzeSymptoms()"
+                >
+                    🔍 Analyze & Get Health Guidance
+                </button>
+
+
+                <div
+                    id="guidance"
+                    class="guidance"
+                ></div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             GOVERNMENT SCHEMES
+        ======================================= -->
+
+        <section
+            id="schemes"
+            class="section schemes"
+        >
+
+            <div class="section-heading">
+
+                <span class="small-title">
+                    HEALTHCARE INFORMATION
+                </span>
+
+                <h2>
+                    Government healthcare schemes
+                </h2>
+
+                <p>
+                    Use official government sources to
+                    check eligibility and benefits.
+                </p>
+
+            </div>
+
+
+            <div class="scheme-grid">
+
+
+                <div class="scheme-card">
+
+                    <div class="scheme-icon">
+                        🇮🇳
+                    </div>
+
+                    <h3>
+                        Ayushman Bharat PM-JAY
+                    </h3>
+
+                    <p>
+                        Information about India's public
+                        health insurance programme.
+                    </p>
+
+                    <a
+                        href="https://pmjay.gov.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Visit official website →
+                    </a>
+
+                </div>
+
+
+                <div class="scheme-card">
+
+                    <div class="scheme-icon">
+                        🏥
+                    </div>
+
+                    <h3>
+                        Health & Wellness
+                    </h3>
+
+                    <p>
+                        Find information about public
+                        healthcare services and facilities.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             EMERGENCY
+        ======================================= -->
+
+        <section class="emergency">
+
+            <div>
+
+                <h2>
+                    Need immediate medical help?
+                </h2>
+
+                <p>
+                    If someone is experiencing a serious
+                    emergency, contact local emergency
+                    services or seek immediate professional
+                    medical assistance.
+                </p>
+
+            </div>
+
+
+            <button
+                onclick="showEmergencyMessage()"
+            >
+                🚨 Emergency Help
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ======================================
+         FOOTER
+    ======================================= -->
+
+    <footer>
+
+        <div class="logo">
+            🩺 AarogyaSetu
+        </div>
+
+        <p>
+            A student healthcare-navigation project.
+        </p>
+
+        <p>
+            For educational purposes only.
+        </p>
+
+    </footer>
+
+
+    <!-- Leaflet JavaScript -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+    <!-- Your JavaScript -->
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+
+
+</body>
+
+</html>
