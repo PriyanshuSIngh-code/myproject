@@ -1,0 +1,322 @@
+/* ---------- General ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f8fb;
+    color: #222;
+}
+
+
+/* ---------- Navigation ---------- */
+
+nav {
+    background-color: #087f5b;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 8%;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* ---------- Hero ---------- */
+
+.hero {
+    min-height: 80vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #e7fff6,
+        #dff5ff
+    );
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #075e43;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #087f5b;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 14px 25px;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #056b4c;
+}
+
+
+/* ---------- Search Section ---------- */
+
+.search-section {
+    padding: 70px 8%;
+    text-align: center;
+}
+
+.search-section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.section-description {
+    margin-bottom: 30px;
+    color: #666;
+}
+
+
+/* ---------- Search Box ---------- */
+
+.search-box {
+    max-width: 600px;
+
+    margin: auto;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+    text-align: left;
+}
+
+.search-box label {
+    display: block;
+
+    margin-top: 15px;
+    margin-bottom: 7px;
+
+    font-weight: bold;
+}
+
+.search-box input {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #ccc;
+    border-radius: 7px;
+
+    font-size: 16px;
+}
+
+.search-box button {
+    width: 100%;
+    margin-top: 25px;
+}
+
+
+/* ---------- Results ---------- */
+
+#results {
+    max-width: 1000px;
+
+    margin: 50px auto 0;
+
+    text-align: left;
+}
+
+#hospital-list {
+    margin-top: 20px;
+}
+
+.hospital {
+    background-color: white;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+
+    border-left: 5px solid #087f5b;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.hospital h3 {
+    color: #087f5b;
+
+    margin-bottom: 10px;
+}
+
+.hospital p {
+    margin: 7px 0;
+}
+
+
+/* ---------- Information Sections ---------- */
+
+.info-section {
+    padding: 70px 8%;
+
+    text-align: center;
+
+    background-color: white;
+
+    margin-top: 20px;
+}
+
+.info-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.info-section p {
+    max-width: 700px;
+
+    margin: 0 auto 25px;
+
+    line-height: 1.6;
+}
+
+
+/* ---------- Cards ---------- */
+
+.cards {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #f4f8fb;
+
+    width: 300px;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    color: #087f5b;
+
+    margin-bottom: 15px;
+}
+
+.card a {
+    color: #087f5b;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+
+/* ---------- Footer ---------- */
+
+footer {
+    background-color: #073b2a;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 30px;
+
+    line-height: 1.7;
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+}
