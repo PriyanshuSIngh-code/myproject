@@ -791,6 +791,16 @@ app.post('/api/rpc/:functionName', (req, res) => {
   res.status(404).json({ error: `Function ${fn} not found` })
 })
 
+// Serve production frontend assets from dist folder if present
+const distDir = path.resolve(__dirname, '..', 'dist')
+if (fs.existsSync(distDir)) {
+  app.use(express.static(distDir))
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next()
+    res.sendFile(path.join(distDir, 'index.html'))
+  })
+}
+
 export const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`[NayayaMitra Backend] Server listening on http://localhost:${PORT}`)
 })
