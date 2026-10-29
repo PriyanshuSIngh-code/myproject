@@ -795,8 +795,11 @@ app.post('/api/rpc/:functionName', (req, res) => {
 const distDir = path.resolve(__dirname, '..', 'dist')
 if (fs.existsSync(distDir)) {
   app.use(express.static(distDir))
-  app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api')) return next()
+  // Express 5 SPA fallback middleware
+  app.use((req, res, next) => {
+    if (req.method !== 'GET' || req.path.startsWith('/api')) {
+      return next()
+    }
     res.sendFile(path.join(distDir, 'index.html'))
   })
 }
