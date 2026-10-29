@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build artifacts & distribution
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables & secrets (CRITICAL: NEVER COMMIT TO GITHUB)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+
+# SQLite Database & Local Data (Never commit user databases)
+server/data/
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-journal
+
+# Uploads & User Submissions
+server/uploads/
+uploads/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor & OS files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db

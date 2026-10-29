@@ -1,0 +1,22 @@
+{
+  "project": "NayayaMitra",
+  "kind": "React + TypeScript + Supabase full-stack starter",
+  "includes": [
+    "responsive frontend",
+    "auth UI",
+    "legal chat starter",
+    "advocate directory",
+    "advocate application uploads",
+    "SQL schema and RLS",
+    "payment integration boundaries",
+    "security checklist",
+    "setup README"
+  ],
+  "important_limitations": [
+    "requires credentials and deployment",
+    "legal chat retrieval/LLM integration not completed",
+    "Razorpay API and webhook verification intentionally disabled until implemented",
+    "admin review UI is informational only",
+    "no fake advocate listings included"
+  ]
+}
